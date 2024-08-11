@@ -246,7 +246,25 @@ class Connect4:
             out += '-' * len(self.B.split("\n")[0]) * self.width + "\n"
         return out
 
+    def place_token(self, col, player):
+        if col > self.width or col < 1:
+            return False
+        for j in range(self.height):
+            i = self.height - j - 1
+            if self.board[i][col - 1] == 0:
+                self.board[i][col - 1] = player
+                return True
+        return False
+
 board = Connect4(6,7, O, X, B, NUMS)
 print(board)
+while True:
+    while board.place_token(int(input("Enter column Player 1: ")), 1) == False:
+        print("Invalid move")
+    print(board)
+
+    while board.place_token(int(input("Enter column Player 2: ")), 2) == False:
+        print("Invalid move")
+    print(board)
 
 #Actual flow of game here
