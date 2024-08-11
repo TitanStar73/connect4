@@ -255,16 +255,39 @@ class Connect4:
                 self.board[i][col - 1] = player
                 return True
         return False
+    
+    def check_win(self):
+        for i in range(self.height):
+            for j in range(self.width):
+                if self.board[i][j] != 0:
+                    if j + 3 < self.width and self.board[i][j] == self.board[i][j+1] == self.board[i][j+2] == self.board[i][j+3]:
+                        return self.board[i][j]
+                    if i + 3 < self.height:
+                        if self.board[i][j] == self.board[i+1][j] == self.board[i+2][j] == self.board[i+3][j]:
+                            return self.board[i][j]
+                        if j + 3 < self.width and self.board[i][j] == self.board[i+1][j+1] == self.board[i+2][j+2] == self.board[i+3][j+3]:
+                            return self.board[i][j]
+                        if j - 3 >= 0 and self.board[i][j] == self.board[i+1][j-1] == self.board[i+2][j-2] == self.board[i+3][j-3]:
+                            return self.board[i][j]
+        return 0
 
 board = Connect4(6,7, O, X, B, NUMS)
 print(board)
 while True:
     while board.place_token(int(input("Enter column Player 1: ")), 1) == False:
         print("Invalid move")
+    print("\n"*1000)
     print(board)
-
+    if board.check_win() == 1:
+        print(X_WIN)
+        break
     while board.place_token(int(input("Enter column Player 2: ")), 2) == False:
         print("Invalid move")
+    print("\n"*1000)
     print(board)
+    if board.check_win() == 2:
+        print(O_WIN)
+        break
 
+print(GAME_OVER)
 #Actual flow of game here
