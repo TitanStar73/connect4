@@ -290,4 +290,3 @@ while True:
         break
 
 print(GAME_OVER)
-#Actual flow of game here
