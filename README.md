@@ -16,3 +16,6 @@ Quick tip: Zoom out your console, and increase the size to be as vertically high
 # Installation options
  - Run connect4.py (No Dependencies)
  - Run connect4.exe
+
+# Credits
+ - Ascii art for text from [here](https://patorjk.com/software/taag/#p=display&f=Big&t=A)
